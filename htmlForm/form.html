@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry Led Form</title>
+    <link rel="stylesheet" href="formStyle.css">
+</head>
+<body>
+    <h1>Data generator</h1>
+    <div class="w3-container w3-teal">
+    
+    <!-- row 1 -->    
+    <div class="row">
+        <div class="column">
+            <div class="card"><br>Select to Add Key<br>
+              <form action="#">
+                <br>
+                <select name="cars" id="options">
+                  <option value="default" selected="selected">Choose option:</option>
+                  <option value="fName">First Name</option>
+                  <option value="lName">Last Name</option>
+                  <option value="pNumber">Phone Number</option>
+                  <option value="email">Email</option>
+                  <option value="age">Age</option>
+                  <option value="address">Address</option>
+                  <option value="vehicle">Vehicle</option>
+                  <option value="language">Language</option>
+                  <option value="cFrom">Country From</option>
+                </select>
+                <br><br>
+                <input type="button" value="Add" onclick="myFunction()" class="btn btn-primary">
+              </form>
+            </div>
+        </div>
+        <!-- Scripts to add rows and delete data from the table 
+
+         Add new row depending on chosen key-->
+        <script>
+          function myFunction() {
+            var table = document.getElementById("entriesTable");
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var e = document.getElementById("options");
+            var value = e.options[e.selectedIndex].value;
+            var text = e.options[e.selectedIndex].text;
+            cell1.innerHTML = text;
+            return false;
+          }
+          // if statement to disallow to delete the first row - it's a title
+          function myDeleteFunction() {
+            var x = document.getElementById("entriesTable").rows.length;
+            if(x > 1){
+              document.getElementById("entriesTable").deleteRow(-1);
+            }
+          
+} 
+          </script>
+        <div class="column">
+          <div class="card"><br>Custom Key<br><br>
+            <input type="text" id="rename" name="rename" placeholder="Insert new name"><br>
+            <form action="#">
+                <br>
+                <select name="cars" id="options">
+                  <option value="default" selected="selected">Choose option:</option>
+                  <option value="fName">First Name</option>
+                  <option value="lName">Last Name</option>
+                  <option value="pNumber">Phone Number</option>
+                  <option value="email">Email</option>
+                  <option value="age">Age</option>
+                  <option value="address">Address</option>
+                  <option value="vehicle">Vehicle</option>
+                  <option value="language">Language</option>
+                  <option value="cFrom">Country From</option>
+                </select>
+                <input type="submit" value="Rename key" onclick="alert('Pressed Rename key!')"" class="btn btn-primary">
+              </form>
+          </div>
+        </div>
+    </div>
+    <!-- row 2  -->
+    <div class="row">
+        <div class="column">
+          <div class="card">
+            <br>
+            <table id="entriesTable">
+              <tr>
+                <th>Elements:</th>
+              </tr>
+            </table>
+          <button type="button" onclick="myDeleteFunction()" class="btn btn-primary">Delete last</button>
+           </div>
+        </div>
+        <div class="column">
+          <div class="card"><br>Entries<br><br>
+            <input type="number" id="entries" min="1" name="entries" placeholder="Insert number"><br>
+          <button type="button" class="btn btn-primary">Generate CSV</button><br>
+          <button type="button" class="btn btn-primary">Reset CSV</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
